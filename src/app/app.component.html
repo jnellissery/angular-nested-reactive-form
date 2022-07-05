@@ -1,0 +1,31 @@
+<form [formGroup]="fg">
+  <label>First Name</label>
+  <input type="text" formControlName="firstname" /><br />
+  <div
+    class="error"
+    *ngIf="
+      fg.get('firstname').hasError('required') && fg.get('firstname').touched
+    "
+  >
+    this is a required field
+  </div>
+  <label>Last Name</label>
+  <input type="text" formControlName="lastname" />
+  <div formArrayName="address">
+  <br/>
+  <b>Address</b>
+  <br/>
+  <ng-container  *ngFor="let cntrl of formarry.controls; let i = index">
+  <ng-container [formGroupName]="i">
+    <br/>
+      <label class=lbladdress>House Name</label>
+      <input type="text" formControlName="housename" /> <br/>
+      <label class=lbladdress>Zip</label>
+      <input type="text" formControlName="zip" />
+    </ng-container>
+  </ng-container>
+  </div>
+ 
+</form>
+<input type="submit"   (click)="save()" />
+<input type="button" value="Add Address" (click)="addaddress()" />

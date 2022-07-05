@@ -1,0 +1,14 @@
+p {
+  font-family: Lato;
+}
+label {
+  min-width: 100px;
+  display: inline-block;
+}
+.lbladdress:first-of-type::before{
+  content: '';
+}
+.error{
+  color:red;
+
+}
