@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.filldata();
   }
   addaddress() {
-    (<FormArray>this.fg.controls['address']).push(
+    this.formarry.push(
       this.fb.group({
         housename: [''],
         zip: [''],
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
   filldata() {
     this.svc.users.subscribe((x) => {
-       if (x.address.length > 0) {
+      if (x.address.length > 0) {
         for (let i = 0; i < x.address?.length; i++) {
           this.formarry.push(
             this.fb.group({
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
           );
         }
       }
-      
+
       this.fg.setValue(x);
     });
   }

@@ -1,1 +1,11 @@
 /* Add application styles & imports to this file! */
+:root {
+  --blue: rgb(104, 21, 230);
+}
+.btnclass {
+  border-radius: 5px;
+  border: 1px solid;
+}
+.btnclass:hover {
+  box-shadow: 10px 10px;
+}
