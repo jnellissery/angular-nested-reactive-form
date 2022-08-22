@@ -10,7 +10,7 @@ export class UserService {
     return of(<Iusers>{
       firstname: 'JOJO',
       lastname: 'Nellissery',
-      address: [{housename:'',zip:''},{housename:'jojo',zip:'m1j1s2'},{housename:'jojo',zip:'m1j1s2'}],
+      address: [],
     });
   }
 }

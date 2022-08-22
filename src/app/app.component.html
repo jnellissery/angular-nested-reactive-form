@@ -12,6 +12,7 @@
   </div>
   <label>Last Name</label>
   <input type="text" formControlName="lastname" />
+  <div class='error' *ngIf='fg.get("lastname").hasError("required") || fg.get("lastname").hasError("touched")'>This field is required</div>
   <div formArrayName="address">
     <br />
     <b>Address</b>

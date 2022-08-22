@@ -20,34 +20,36 @@ export class AppComponent implements OnInit {
     this.filldata();
   }
   addaddress() {
-    this.formarry.push(
-      this.fb.group({
-        housename: [''],
-        zip: [''],
-      })
-    );
+    this.formarry.push(this.addformgroup());
   }
   filldata() {
     this.svc.users.subscribe((x) => {
       if (x.address.length > 0) {
         for (let i = 0; i < x.address?.length; i++) {
-          this.formarry.push(
-            this.fb.group({
-              housename: [''],
-              zip: [''],
-            })
-          );
+          this.formarry.push(this.addformgroup());
         }
+      } else {
+        console.log(this.formarry.length);
+        this.formarry.push(this.addformgroup());
       }
 
-      this.fg.setValue(x);
+      this.fg.patchValue(x);
     });
   }
   get formarry(): FormArray {
-    return <FormArray>this.fg.controls['address'];
+    return <FormArray>this.fg.get('address');
   }
   save() {
     this.fg.get('firstname').hasError('requored');
     console.log(this.fg.value);
+  }
+  addarrry(): FormArray {
+    return <FormArray>this.fg.get('address');
+  }
+  addformgroup(): FormGroup {
+    return this.fb.group({
+      housename: [''],
+      zip: [''],
+    });
   }
 }
